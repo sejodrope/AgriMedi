@@ -76,48 +76,7 @@ Clique [aqui](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/d
 
 ---
 
-## ⚙️ **Como Executar o Projeto**
-
-### Pré-requisitos:
-- Node.js (v12+)
-- API de Sensores Integrados
-
-### Instalação:
-```bash
-# Clone o repositório
-git clone https://github.com/username/HydroHop.git
-
-# Instale as dependências
-npm install
-
-# Inicie o sistema
-npm start
-```
-
-### Configurações:
-Certifique-se de configurar as credenciais dos sensores IoT no arquivo `config.json`.
-
----
-
-## 🛠️ **Tecnologias Utilizadas**
-
-- **Frontend**: React, Chart.js
-- **Backend**: Node.js, Express
-- **Banco de Dados**: MongoDB
-- **Integração IoT**: MQTT, Sensores de Umidade e Temperatura
-
----
-
-## 🎨 **Contribuindo**
-
-Sinta-se à vontade para contribuir! Veja o arquivo [CONTRIBUTING.md](link_para_contributing) para saber mais sobre como começar.
-
----
-
 ## 📧 **Contato**
 
-Entre em contato pelo e-mail: [josepedro@example.com](mailto:josepedro@example.com)
+Entre em contato pelo e-mail: [josepedro@example.com](mailto:vieirasilvajosepedro@gmail.com)
 
----
-
-Com esse modelo, seu README estará estiloso, interativo e fácil de navegar!
