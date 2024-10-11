@@ -53,30 +53,11 @@ Bem-vindo ao **AgriMedi**, o sistema completo para gerenciamento automatizado e 
 
 ## 🖥️ **Diagrama UML**
 
-Clique [aqui](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/distribuicao_conteudos.png)) para visualizar o diagrama de classe completo. <!-- Substitua "link_para_diagrama" com o link real para o diagrama -->
-![Diagrama UML](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/distribuicao_conteudos.png)
 
 ---
 
-## 🚀 **Histórias de Usuário**
-
-### 1. **Monitoramento Ambiental em Tempo Real**
-- **Supervisor**: "Eu gostaria de visualizar dados em tempo real no dashboard para garantir condições ideais de cultivo."
-- **Operador**: "Eu gostaria de receber alertas automáticos sobre variações críticas para intervir rapidamente."
-
-### 2. **Controle Automático de Irrigação**
-- **Operador**: "Eu gostaria de configurar o sistema de irrigação para garantir que as plantas recebam água e nutrientes ideais."
-- **Supervisor**: "Eu gostaria de monitorar o desempenho da irrigação para ajustar os planos conforme necessário."
-
-### 3. **Gestão de Nutrientes**
-- **Operador**: "Eu gostaria de ajustar a solução nutritiva para manter os níveis de pH e nutrientes ideais."
-- **Supervisor**: "Eu gostaria de revisar históricos de ajustes de nutrientes para otimizar a fertilização."
-
-*(Adicione as outras histórias conforme necessário)*
-
----
 
 ## 📧 **Contato**
 
-Entre em contato pelo e-mail: [josepedro@example.com](mailto:vieirasilvajosepedro@gmail.com)
+Entre em contato pelo e-mail: [vieirasilvajosepedro@gmail.com](mailto:vieirasilvajosepedro@gmail.com)
 
