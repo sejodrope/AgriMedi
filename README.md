@@ -54,6 +54,7 @@ Bem-vindo ao **AgriMedi**, o sistema completo para gerenciamento automatizado e 
 ## 🖥️ **Diagrama UML**
 
 ![Diagrama de Classe](https://github.com/sejodrope/AgriMedi/tree/breanch-sejodrope/src/main/java/br/agrimedi/agrimediapi/imagens/Diagrama_De_Classes.svg)
+![Evolução dos Diretores que Também Atuam ao Longo dos Anos](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/evolucao_diretores.png)
 
 ---
 
