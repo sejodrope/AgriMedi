@@ -1,0 +1,123 @@
+
+# 🌿 **AgriMedi** - Sistema de Gestão de Cultivo de **Lúpulo Hidropônico**
+
+Bem-vindo ao **AgriMedi**, o sistema completo para gerenciamento automatizado e eficiente do cultivo de lúpulo hidropônico. Esta solução oferece monitoramento ambiental em tempo real, automação da irrigação, controle de nutrientes, detecção de pragas, e muito mais. Nossa missão é ajudar você a otimizar a produção com facilidade e precisão.
+
+---
+
+## 📈 **Funcionalidades Principais**
+
+1. **Monitoramento Ambiental em Tempo Real**:
+   - 📊 Sensores de temperatura, umidade, CO2 e luz integrados à API. Dados exibidos em dashboards para ajustes automáticos.
+   
+2. **Controle Automático de Irrigação**:
+   - 💧 Sistema inteligente que ajusta a irrigação com base em sensores de umidade e EC/PPM.
+
+3. **Gestão de Nutrientes**:
+   - 🧪 Monitoramento do pH, EC e PPM, permitindo ajustes automáticos na solução nutritiva.
+
+4. **Planejamento e Gestão de Fotoperíodo**:
+   - 🌞 Programação automatizada do ciclo de luz com base nas fases de crescimento do lúpulo.
+
+5. **Registro de Ciclos de Crescimento**:
+   - 📅 Histórico completo dos ciclos de crescimento, com data de plantio, colheita e ajustes de nutrientes.
+
+6. **Gestão de Treliça e Poda**:
+   - ✂️ Planejamento de operações de poda e manejo de treliças com recomendações automáticas.
+
+7. **Detecção e Controle de Pragas e Doenças**:
+   - 🐛 Sistema de alerta baseado em dados de sensores e imagens para identificação precoce de pragas.
+
+8. **Gestão de Colheita**:
+   - 🌿 Ferramenta de planejamento e registro da colheita, com métricas de rendimento.
+
+9. **Previsão de Produção**:
+   - 📊 Algoritmos preditivos para estimar o rendimento baseado em dados históricos.
+
+10. **Análise de Eficiência Energética**:
+    - ⚡ Monitoramento do consumo de energia com sugestões de otimização.
+
+11. **Alertas e Notificações**:
+    - 📲 Notificações por SMS ou e-mail para condições críticas, como falhas ou variações extremas.
+
+12. **Integração com IoT e Automação**:
+    - 🤖 Controle remoto de dispositivos IoT como luzes, bombas e ventiladores.
+
+13. **Relatórios de Desempenho**:
+    - 📊 Geração de relatórios personalizados sobre o desempenho do cultivo.
+
+14. **Interface de Usuário Amigável e Customizável**:
+    - 🖥️ Painéis personalizáveis para facilitar a gestão.
+
+---
+
+## 🖥️ **Diagrama UML**
+
+Clique [aqui](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/distribuicao_conteudos.png)) para visualizar o diagrama de classe completo. <!-- Substitua "link_para_diagrama" com o link real para o diagrama -->
+![Diagrama UML](https://github.com/sejodrope/desafio_VExpenses/blob/main/imagens/distribuicao_conteudos.png)
+
+---
+
+## 🚀 **Histórias de Usuário**
+
+### 1. **Monitoramento Ambiental em Tempo Real**
+- **Supervisor**: "Eu gostaria de visualizar dados em tempo real no dashboard para garantir condições ideais de cultivo."
+- **Operador**: "Eu gostaria de receber alertas automáticos sobre variações críticas para intervir rapidamente."
+
+### 2. **Controle Automático de Irrigação**
+- **Operador**: "Eu gostaria de configurar o sistema de irrigação para garantir que as plantas recebam água e nutrientes ideais."
+- **Supervisor**: "Eu gostaria de monitorar o desempenho da irrigação para ajustar os planos conforme necessário."
+
+### 3. **Gestão de Nutrientes**
+- **Operador**: "Eu gostaria de ajustar a solução nutritiva para manter os níveis de pH e nutrientes ideais."
+- **Supervisor**: "Eu gostaria de revisar históricos de ajustes de nutrientes para otimizar a fertilização."
+
+*(Adicione as outras histórias conforme necessário)*
+
+---
+
+## ⚙️ **Como Executar o Projeto**
+
+### Pré-requisitos:
+- Node.js (v12+)
+- API de Sensores Integrados
+
+### Instalação:
+```bash
+# Clone o repositório
+git clone https://github.com/username/HydroHop.git
+
+# Instale as dependências
+npm install
+
+# Inicie o sistema
+npm start
+```
+
+### Configurações:
+Certifique-se de configurar as credenciais dos sensores IoT no arquivo `config.json`.
+
+---
+
+## 🛠️ **Tecnologias Utilizadas**
+
+- **Frontend**: React, Chart.js
+- **Backend**: Node.js, Express
+- **Banco de Dados**: MongoDB
+- **Integração IoT**: MQTT, Sensores de Umidade e Temperatura
+
+---
+
+## 🎨 **Contribuindo**
+
+Sinta-se à vontade para contribuir! Veja o arquivo [CONTRIBUTING.md](link_para_contributing) para saber mais sobre como começar.
+
+---
+
+## 📧 **Contato**
+
+Entre em contato pelo e-mail: [josepedro@example.com](mailto:josepedro@example.com)
+
+---
+
+Com esse modelo, seu README estará estiloso, interativo e fácil de navegar!
