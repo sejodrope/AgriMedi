@@ -2,69 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head th:include="layout :: htmlhead"></head>
     <body>
-        
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Clientes</h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">Gestão de Clientes</h1>
+            </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-center mb-3">
                 <a href="/clientes/novo" class="btn btn-primary btn-modern">
                     <i class="fas fa-plus"></i> Novo Cliente
                 </a>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-hover table-standard" id="tabelaclientes">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nome</th>
-                            <th>Endereço</th>
-                            <th>Data Nascimento</th>
-                            <th>Cidade</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="umCliente : ${listaClientes}">
-                            <td th:text="${umCliente.nome}"></td>
-                            <td th:text="${umCliente.endereco}"></td>
-                            <td th:text="${umCliente.dataNascimento}"></td>
-                            <td th:text="${umCliente.cidade?.nome}"></td>
-                            <td>
-                                <a th:href="@{'/clientes/alterar/' + ${umCliente.id}}"
-                                    class="btn btn-warning btn-sm"
-                                >Alterar</a>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-standard" id="tabelaclientes">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Endereço</th>
+                                    <th class="text-center">Cidade</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="umCliente : ${listaClientes}">
+                                    <td class="text-center" th:text="${umCliente.nome}"></td>
+                                    <td class="text-center" th:text="${umCliente.endereco}"></td>
+                                    <td class="text-center" th:text="${umCliente.cidade?.nome}"></td>
+                                    <td class="text-center">
+                                        <a th:href="@{'/clientes/alterar/' + ${umCliente.id}}"
+                                            class="btn btn-warning btn-sm"
+                                        >Alterar</a>
 
-                                <button
-                                    class="btn btn-danger btn-sm js-delete"
-                                    th:data-id="${umCliente.id}"
-                                >Excluir</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                        <button
+                                            class="btn btn-danger btn-sm js-delete"
+                                            th:data-id="${umCliente.id}"
+                                        >Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </main>
+
+        <!-- Modal de confirmação -->
+        <div class="modal fade" tabindex="-1" id="modalcliente">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Confirmar Exclusão</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja excluir este cliente?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnsim">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div th:include="layout :: footer">(footer)</div>
         <script th:src="@{/scriptcliente.js}"></script>
     </body>
 </html>
-
-<div class="modal fade modal-standard" tabindex="-1" id="modalcliente">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Excluir Cliente</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Confirma a exclusão do cliente?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-modern" data-bs-dismiss="modal">Não</button>
-          <button type="button" class="btn btn-primary btn-modern" id="btnsim">Sim</button>
-        </div>
-      </div>
-    </div>
-  </div>

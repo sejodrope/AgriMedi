@@ -2,64 +2,70 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head th:include="layout :: htmlhead"></head>
     <body>
-        
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Pedidos</h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">Gestão de Pedidos</h1>
+            </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-center mb-3">
                 <a href="/pedidos/novo" class="btn btn-primary btn-modern">
                     <i class="fas fa-plus"></i> Novo Pedido
                 </a>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-hover table-standard" id="tabelapedidos">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="umpedido : ${listaPedidos}">
-                            <td th:text="${umpedido.data}"></td>
-                            <td>
-                                <a th:href="@{'/pedidos/alterar/' + ${umpedido.id}}"
-                                    class="btn btn-warning btn-sm"
-                                >Alterar</a>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-standard" id="tabelapedidos">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">Cliente</th>
+                                    <th class="text-center">Data</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="umpedido : ${listaPedidos}">
+                                    <td class="text-center" th:text="${umpedido.cliente?.nome}"></td>
+                                    <td class="text-center" th:text="${umpedido.data}"></td>
+                                    <td class="text-center">
+                                        <a th:href="@{'/pedidos/alterar/' + ${umpedido.id}}"
+                                            class="btn btn-warning btn-sm"
+                                        >Alterar</a>
 
-                                <button
-                                    class="btn btn-danger btn-sm js-delete"
-                                    th:data-id="${umpedido.id}"
-                                >Excluir</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                        <button
+                                            class="btn btn-danger btn-sm js-delete"
+                                            th:data-id="${umpedido.id}"
+                                        >Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </main>
 
         <div th:include="layout :: footer">(footer)</div>
         <script th:src="@{/scriptpedido.js}"></script>
+        
+        <div class="modal fade" tabindex="-1" id="modalpedido">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Excluir pedido</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Confirma a exclusão do pedido?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                  <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </body>
 </html>
-
-<div class="modal fade" tabindex="-1" id="modalpedido">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Excluir pedido</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Confirma a exclusão do pedido?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-          <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
-        </div>
-      </div>
-    </div>
-  </div>

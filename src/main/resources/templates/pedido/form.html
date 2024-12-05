@@ -4,25 +4,41 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Pedido</h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">Pedido</h1>
+            </div>
             
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div class="form-container form-standard">
                         <form th:action="@{/pedidos}" method="POST" th:object="${pedido}">
                             <input type="hidden" th:field="*{id}">
 
-                            <div class="form-group mb-4">
+                            <div class="form-group mb-4 text-center">
                                 <label for="txtdata">Data do Pedido</label>
                                 <input id="txtdata"
                                     th:field="*{data}"
-                                    class="form-control"
+                                    class="form-control w-50 mx-auto"
                                     type="date">
+                            </div>
+
+                            <!-- Cliente dropdown -->
+                            <div class="form-group mb-4 text-center">
+                                <label for="cbcliente">Cliente</label>
+                                <select id="cbcliente"
+                                    th:field="*{cliente}"
+                                    class="form-control w-75 mx-auto">
+                                    <option value="">Selecione um cliente</option>
+                                    <option th:each="cliente : ${listaClientes}"
+                                            th:value="${cliente.id}"
+                                            th:text="${cliente.nome}">
+                                    </option>
+                                </select>
                             </div>
 
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <h5 class="card-title">Itens de Pedidos Vinculados</h5>
+                                    <h5 class="card-title text-center">Itens de Pedidos Vinculados</h5>
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead class="table-dark">
@@ -62,37 +78,48 @@
 
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <h5 class="card-title">Novo Item de Pedido</h5>
-                                    <div class="form-group mb-3">
-                                        <label for="cbproduto">Produto:</label>
-                                        <select class="form-select" id="cbproduto"
-                                            th:field="${novoItem.produto}">
-                                            <option th:each="umproduto : ${listaProdutos}"
-                                                    th:value="${umproduto.id}"
-                                                    th:text="${umproduto.descricao}">
-                                            </option>
-                                        </select>
-                                    </div>
+                                    <h5 class="card-title text-center">Novo Item de Pedido</h5>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8">
+                                            <div class="form-group mb-3">
+                                                <label for="cbproduto">Produto:</label>
+                                                <select class="form-select" id="cbproduto"
+                                                    th:field="${novoItem.produto}">
+                                                    <option th:each="umproduto : ${listaProdutos}"
+                                                            th:value="${umproduto.id}"
+                                                            th:text="${umproduto.descricao}">
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                    <div class="form-group mb-3">
-                                        <label for="txtQuantidade">Quantidade:</label>
-                                        <input type="number" id="txtQuantidade"
-                                            class="form-control"
-                                            th:field="${novoItem.quantidade}">
+                                            <div class="form-group mb-3">
+                                                <label for="txtQuantidade">Quantidade:</label>
+                                                <input type="number" id="txtQuantidade"
+                                                    class="form-control"
+                                                    th:field="${novoItem.quantidade}"
+                                                    min="1" 
+                                                    required>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="txtValorPedido">Valor do Pedido:</label>
+                                                <input type="number" id="txtValorPedido"
+                                                    class="form-control"
+                                                    th:field="${novoItem.valor}"
+                                                    min="0.01" 
+                                                    step="0.01"
+                                                    required>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <button type="submit" name="incitem"
+                                                    class="btn btn-primary">Adicionar Item</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="txtValorPedido">Valor do Pedido:</label>
-                                        <input type="number" id="txtValorPedido"
-                                            class="form-control"
-                                            th:field="${novoItem.valor}">
-                                    </div>
-                                    <button type="submit" name="incitem"
-                                        class="btn btn-primary">Adicionar Item</button>
                                 </div>
                             </div>
 
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="/pedidos" class="btn btn-secondary me-md-2 btn-modern">Cancelar</a>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="/pedidos" class="btn btn-secondary btn-modern">Cancelar</a>
                                 <button type="submit" name="save" class="btn btn-primary btn-modern">Salvar</button>
                             </div>
                         </form>

@@ -4,38 +4,40 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title text-center mb-5">Gestão de Produtos</h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">Gestão de Produtos</h1>
+            </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-center mb-3">
                 <a href="/produtos/novo" class="btn btn-primary btn-modern">
                     <i class="fas fa-plus"></i> Novo Produto
                 </a>
             </div>
 
-            <div class="card">
-                <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
                     <div class="table-responsive">
                         <table class="table table-hover table-standard" id="tabelaprodutos">
-                            <thead>
+                            <thead class="table-dark">
                                 <tr>
-                                    <th>Descrição</th>
-                                    <th>Valor</th>
+                                    <th class="text-center">Descrição</th>
+                                    <th class="text-center">Valor</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="umproduto : ${listaProdutos}">
-                                    <td th:text="${umproduto.descricao}"></td>
-                                    <td th:text="${'R$ ' + #numbers.formatDecimal(umproduto.valor, 1, 2)}"></td>
+                                    <td class="text-center" th:text="${umproduto.descricao}"></td>
+                                    <td class="text-center" th:text="${'R$ ' + #numbers.formatDecimal(umproduto.valor, 1, 2)}"></td>
                                     <td class="text-center">
                                         <a th:href="@{'/produtos/alterar/' + ${umproduto.id}}"
                                             class="btn btn-warning btn-sm"
-                                        ><i class="fas fa-edit"></i> Alterar</a>
+                                        >Alterar</a>
 
                                         <button
                                             class="btn btn-danger btn-sm js-delete"
                                             th:data-id="${umproduto.id}"
-                                        ><i class="fas fa-trash"></i> Excluir</button>
+                                        >Excluir</button>
                                     </td>
                                 </tr>
                             </tbody>

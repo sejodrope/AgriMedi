@@ -4,49 +4,89 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Cliente</h1>
+            <h1 class="page-title text-center mb-5">
+                <i class="fas fa-user"></i> 
+                <span th:text="${cliente.id == null ? 'Novo Cliente' : 'Editar Cliente'}"></span>
+            </h1>
             
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="form-container form-standard">
-                        <form th:action="@{/clientes}" method="POST" th:object="${cliente}">
-                            <input type="hidden" th:field="*{id}">
+                    <div class="card form-card">
+                        <div class="card-body">
+                            <form th:action="@{/clientes}" method="POST" th:object="${cliente}" class="needs-validation form-standard" novalidate>
+                                <input type="hidden" th:field="*{id}">
 
-                            <div class="form-group mb-3">
-                                <label for="txtnome">Nome</label>
-                                <input id="txtnome"
-                                    th:field="*{nome}"
-                                    class="form-control"
-                                    type="text">
-                            </div>
+                                <div class="form-group mb-4">
+                                    <label for="txtnome" class="form-label">Nome</label>
+                                    <input id="txtnome"
+                                        th:field="*{nome}"
+                                        class="form-control"
+                                        type="text"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o nome do cliente.
+                                    </div>
+                                </div>
 
-                            <div class="form-group mb-3">
-                                <label for="txtendereco">Endereço</label>
-                                <input id="txtendereco"
-                                    th:field="*{endereco}"
-                                    class="form-control"
-                                    type="text">
-                            </div>
+                                <div class="form-group mb-4">
+                                    <label for="txtendereco" class="form-label">Endereço</label>
+                                    <input id="txtendereco"
+                                        th:field="*{endereco}"
+                                        class="form-control"
+                                        type="text"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor, informe o endereço do cliente.
+                                    </div>
+                                </div>
 
-                            <div class="form-group mb-3">
-                                <label for="txtcidade">Cidade</label>
-                                <select class="form-select" th:field="*{cidade}">
-                                    <option th:each="umaCidade : ${listaCidades}"
-                                            th:text="${umaCidade.nome}"
-                                            th:value="${umaCidade.id}">
-                                    </option>
-                                </select>
-                            </div>
+                                <div class="form-group mb-4">
+                                    <label for="txtcidade" class="form-label">Cidade</label>
+                                    <select class="form-select" th:field="*{cidade}" required>
+                                        <option value="">Selecione uma cidade</option>
+                                        <option th:each="umaCidade : ${listaCidades}"
+                                                th:text="${umaCidade.nome}"
+                                                th:value="${umaCidade.id}">
+                                        </option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione uma cidade.
+                                    </div>
+                                </div>
 
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="/clientes" class="btn btn-secondary me-md-2 btn-modern">Cancelar</a>
-                                <button type="submit" class="btn btn-primary btn-modern">Salvar</button>
-                            </div>
-                        </form>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="/clientes" class="btn btn-secondary me-md-2">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </a>
+                                    <button type="submit" class="btn btn-primary btn-modern">
+                                        <i class="fas fa-save"></i> Salvar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
+
         <div th:include="layout :: footer">(footer)</div>
+        
+        <script>
+            // Validação do formulário
+            (function() {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+                Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
     </body>
 </html>

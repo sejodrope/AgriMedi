@@ -1,0 +1,12 @@
+// ...existing code...
+<td class="text-center">
+    <a th:href="@{'/clientes/alterar/' + ${umCliente.id}}"
+        class="btn btn-warning"
+    ><i class="fas fa-edit"></i> Alterar</a>
+
+    <button
+        class="btn btn-danger js-delete"
+        th:data-id="${umCliente.id}"
+    ><i class="fas fa-trash"></i> Excluir</button>
+</td>
+// ...rest of existing code...

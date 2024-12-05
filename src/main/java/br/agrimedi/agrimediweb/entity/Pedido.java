@@ -22,6 +22,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
@@ -59,5 +60,4 @@ public class Pedido {
     public void setData(Date data) {
         this.data = data;
     }
-    
 }
