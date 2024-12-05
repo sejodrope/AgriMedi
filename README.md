@@ -1,6 +1,3 @@
-Aqui está o conteúdo formatado em Markdown para o README:
-
-```markdown
 # 🌱 AgriMedi
 
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
@@ -70,7 +67,6 @@ Aqui está o conteúdo formatado em Markdown para o README:
 
 **José Pedro Vieira Silva**
 
----
 
 ## 📄 Licença
 
