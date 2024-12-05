@@ -779,3 +779,194 @@ body::before {
     from { transform: scale(1); }
     to { transform: scale(1.2); }
 }
+
+/* Novas animações para entrada de conteúdo */
+@keyframes slideInFromCenter {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeInUpContent {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicando animações nos elementos principais */
+main.container {
+    animation: slideInFromCenter 0.6s ease-out;
+    perspective: 1000px;
+}
+
+.card, .table-responsive, .form-container {
+    animation: fadeInUpContent 0.8s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+
+/* Efeito cascata para cards na dashboard */
+.dashboard-card:nth-child(1) { animation-delay: 0.2s; }
+.dashboard-card:nth-child(2) { animation-delay: 0.4s; }
+.dashboard-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* Efeito hover mais suave nos cards */
+.dashboard-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    backface-visibility: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Efeito de destaque ao clicar */
+.card:active, .btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+}
+
+/* Melhorias na tabela */
+.table-standard {
+    transform-origin: top;
+    animation: fadeInUpContent 0.8s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.table-standard tbody tr {
+    opacity: 0;
+    animation: fadeInUpContent 0.5s ease-out forwards;
+}
+
+.table-standard tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table-standard tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.table-standard tbody tr:nth-child(3) { animation-delay: 0.3s; }
+/* ... continuação para mais linhas se necessário */
+
+/* Efeito de loading mais suave */
+.loading {
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.8);
+}
+
+/* Efeito de click nos botões */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent);
+    transition: 0.5s;
+}
+
+.btn:active::after {
+    left: 100%;
+}
+
+/* Efeito de foco nos formulários */
+.form-control:focus, .form-select:focus {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Efeitos para modais */
+.modal.fade .modal-dialog {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.show .modal-dialog {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Melhorias no navbar */
+.navbar-nav .nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-sun);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    transform: translateX(0);
+}
+
+/* Efeito de scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efeitos para mensagens de feedback */
+.alert {
+    animation: slideInFromCenter 0.5s ease-out;
+}
+
+/* Melhorias nos inputs */
+.form-control, .form-select {
+    transition: all 0.3s ease;
+}
+
+.form-control:hover, .form-select:hover {
+    border-color: var(--color-grass);
+}
+
+/* Efeito de loading nos botões */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    right: 8px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: button-loading-spinner 0.6s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}

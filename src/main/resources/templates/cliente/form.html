@@ -4,10 +4,12 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title text-center mb-5">
-                <i class="fas fa-user"></i> 
-                <span th:text="${cliente.id == null ? 'Novo Cliente' : 'Editar Cliente'}"></span>
-            </h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">
+                    <i class="fas fa-user"></i> 
+                    <span th:text="${cliente.id == null ? 'Cadastrar Cliente' : 'Cadastrar Cliente'}"></span>
+                </h1>
+            </div>
             
             <div class="row justify-content-center">
                 <div class="col-md-8">

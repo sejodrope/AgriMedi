@@ -4,10 +4,12 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title text-center mb-5">
-                <i class="fas fa-box"></i> 
-                <span th:text="${produto.id == null ? 'Novo Produto' : 'Editar Produto'}"></span>
-            </h1>
+            <div class="text-center mb-4">
+                <h1 class="page-title">
+                    <i class="fas fa-box"></i> 
+                    <span th:text="${produto.id == null ? 'Cadastrar Produto' : 'Cadastrar Produto'}"></span>
+                </h1>
+            </div>
             
             <div class="row justify-content-center">
                 <div class="col-md-8">
