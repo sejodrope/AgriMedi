@@ -2,65 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head th:include="layout :: htmlhead"></head>
     <body>
-        
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Produtos</h1>
+            <h1 class="page-title text-center mb-5">Gestão de Produtos</h1>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="/produtos/novo" class="btn btn-primary">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <a href="/produtos/novo" class="btn btn-primary btn-modern">
                     <i class="fas fa-plus"></i> Novo Produto
                 </a>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-hover" id="tabelaprodutos">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="umproduto : ${listaProdutos}">
-                            <td th:text="${umproduto.descricao}"></td>
-                            <td th:text="${umproduto.valor}"></td>
-                            <td>
-                                <a th:href="@{'/produtos/alterar/' + ${umproduto.id}}"
-                                    class="btn btn-warning btn-sm"
-                                >Alterar</a>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-standard" id="tabelaprodutos">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="umproduto : ${listaProdutos}">
+                                    <td th:text="${umproduto.descricao}"></td>
+                                    <td th:text="${'R$ ' + #numbers.formatDecimal(umproduto.valor, 1, 2)}"></td>
+                                    <td class="text-center">
+                                        <a th:href="@{'/produtos/alterar/' + ${umproduto.id}}"
+                                            class="btn btn-warning btn-sm"
+                                        ><i class="fas fa-edit"></i> Alterar</a>
 
-                                <button
-                                    class="btn btn-danger btn-sm js-delete"
-                                    th:data-id="${umproduto.id}"
-                                >Excluir</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                        <button
+                                            class="btn btn-danger btn-sm js-delete"
+                                            th:data-id="${umproduto.id}"
+                                        ><i class="fas fa-trash"></i> Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </main>
+
+        <!-- Modal de confirmação -->
+        <div class="modal fade" tabindex="-1" id="modalproduto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Confirmar Exclusão</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja excluir este produto?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnsim">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div th:include="layout :: footer">(footer)</div>
         <script th:src="@{/scriptproduto.js}"></script>
     </body>
 </html>
-
-<div class="modal fade" tabindex="-1" id="modalproduto">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Excluir produto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Confirma a exclusão do produto?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-          <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
-        </div>
-      </div>
-    </div>
-  </div>

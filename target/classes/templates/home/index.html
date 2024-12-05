@@ -4,40 +4,43 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
-            <h1 class="page-title">Bem-vindo ao AgriMedi</h1>
+            <h1 class="page-title text-center mb-5">Bem-vindo ao AgriMedi</h1>
             
-            <div class="row mt-4">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+            <div class="row justify-content-center mt-4 g-4">
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-3x mb-3 card-icon"></i>
                             <h5 class="card-title">Clientes</h5>
                             <p class="card-text">Gerencie seus clientes de forma eficiente.</p>
-                            <a href="/clientes" class="btn btn-primary">
-                                Acessar Clientes
+                            <a href="/clientes" class="btn btn-primary btn-modern">
+                                <i class="fas fa-arrow-right"></i> Acessar Clientes
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-box fa-3x mb-3 card-icon"></i>
                             <h5 class="card-title">Produtos</h5>
                             <p class="card-text">Controle seu estoque e produtos.</p>
-                            <a href="/produtos" class="btn btn-primary">
-                                Acessar Produtos
+                            <a href="/produtos" class="btn btn-primary btn-block">
+                                <i class="fas fa-arrow-right"></i> Acessar Produtos
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
+                <div class="col-md-4">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shopping-cart fa-3x mb-3 card-icon"></i>
                             <h5 class="card-title">Pedidos</h5>
                             <p class="card-text">Gerencie pedidos e vendas.</p>
-                            <a href="/pedidos" class="btn btn-primary">
-                                Acessar Pedidos
+                            <a href="/pedidos" class="btn btn-primary btn-block">
+                                <i class="fas fa-arrow-right"></i> Acessar Pedidos
                             </a>
                         </div>
                     </div>

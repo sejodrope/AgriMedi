@@ -8,7 +8,7 @@
             
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <div class="form-container">
+                    <div class="form-container form-standard">
                         <form th:action="@{/pedidos}" method="POST" th:object="${pedido}">
                             <input type="hidden" th:field="*{id}">
 
@@ -27,27 +27,27 @@
                                         <table class="table table-hover">
                                             <thead class="table-dark">
                                                 <tr>
-                                                    <th>Produto</th>
-                                                    <th>Quantidade</th>
-                                                    <th>Valor</th>
-                                                    <th>Ações</th>
+                                                    <th class="text-center">Produto</th>
+                                                    <th class="text-center">Quantidade</th>
+                                                    <th class="text-center">Valor</th>
+                                                    <th class="text-center">Ações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr th:each="umItem, stat : *{itens}">
-                                                    <td th:text="${umItem.produto?.descricao}"></td>
+                                                    <td class="text-center" th:text="${umItem.produto?.descricao}"></td>
                                                     <input type="hidden"
                                                         th:field="*{itens[__${stat.index}__].produto}">
 
-                                                    <td th:text="${umItem.quantidade}"></td>
+                                                    <td class="text-center" th:text="${umItem.quantidade}"></td>
                                                     <input type="hidden"
                                                         th:field="*{itens[__${stat.index}__].quantidade}">
 
-                                                    <td th:text="${umItem.valor}"></td>
+                                                    <td class="text-center" th:text="${umItem.valor}"></td>
                                                     <input type="hidden"
                                                         th:field="*{itens[__${stat.index}__].valor}">
                                                     
-                                                    <td>
+                                                    <td class="text-center">
                                                         <button class="btn btn-danger btn-sm"
                                                             type="submit"
                                                             name="removeitem"
@@ -92,8 +92,8 @@
                             </div>
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="/pedidos" class="btn btn-secondary me-md-2">Cancelar</a>
-                                <button type="submit" name="save" class="btn btn-primary">Salvar</button>
+                                <a href="/pedidos" class="btn btn-secondary me-md-2 btn-modern">Cancelar</a>
+                                <button type="submit" name="save" class="btn btn-primary btn-modern">Salvar</button>
                             </div>
                         </form>
                     </div>

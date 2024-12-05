@@ -8,13 +8,13 @@
             <h1 class="page-title">Clientes</h1>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="/clientes/novo" class="btn btn-primary">
+                <a href="/clientes/novo" class="btn btn-primary btn-modern">
                     <i class="fas fa-plus"></i> Novo Cliente
                 </a>
             </div>
 
             <div class="table-responsive">
-                <table class="table table-hover" id="tabelaclientes">
+                <table class="table table-hover table-standard" id="tabelaclientes">
                     <thead class="table-dark">
                         <tr>
                             <th>Nome</th>
@@ -51,7 +51,7 @@
     </body>
 </html>
 
-<div class="modal fade" tabindex="-1" id="modalcliente">
+<div class="modal fade modal-standard" tabindex="-1" id="modalcliente">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -62,8 +62,8 @@
           <p>Confirma a exclusão do cliente?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-          <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+          <button type="button" class="btn btn-secondary btn-modern" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-primary btn-modern" id="btnsim">Sim</button>
         </div>
       </div>
     </div>

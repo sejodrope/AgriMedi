@@ -7,6 +7,12 @@
     --color-sun: #FDB813;
     --color-water: #3498db;
     --color-wheat: #F5DEB3;
+
+    /* Novas variáveis para padronização */
+    --btn-primary-bg: var(--color-grass);
+    --btn-primary-hover: var(--color-leaf);
+    --navbar-bg: linear-gradient(to right, var(--color-earth), var(--color-soil));
+    --card-bg: linear-gradient(to bottom, #fff, var(--color-wheat));
 }
 
 .page-title {
@@ -82,6 +88,7 @@
     position: relative;
     color: var(--color-soil);
     border-bottom: 2px solid var(--color-grass);
+    text-align: center;
 }
 
 .card-title::after {
@@ -268,4 +275,292 @@ body::before {
     height: 100%;
     background: rgba(255, 255, 255, 0.95); /* Overlay suave */
     z-index: -1;
+}
+
+/* Cards da Dashboard */
+.dashboard-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    color: var(--color-grass);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Melhorias na Tabela */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.table th {
+    background: var(--color-earth);
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+}
+
+/* Botões de Ação */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin: 0 0.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background-color: var(--color-sun);
+    border-color: var(--color-sun);
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e5a912;
+    border-color: #e5a912;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-header {
+    background-color: var(--color-earth);
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-footer {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Formulários */
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-grass);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    .dashboard-card {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-sm {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .table {
+        font-size: 0.9rem;
+    }
+}
+
+/* Loading spinner */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-grass);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Classes padronizadas */
+.btn-modern {
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-modern:hover {
+    background-color: var(--btn-primary-hover);
+    transform: translateY(-2px);
+}
+
+.table-standard {
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.table-standard th,
+.table-standard td {
+    vertical-align: middle;
+}
+
+.table-standard td .btn {
+    display: inline-block;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+/* Estilos para centralização da tabela */
+.table-standard th,
+.table-standard td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-standard td .btn {
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.form-standard .form-control,
+.form-standard .form-select {
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+}
+
+.form-standard .form-control:focus,
+.form-standard .form-select:focus {
+    border-color: var(--color-grass);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+.modal-standard .modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+.navbar-custom {
+    background: var(--navbar-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dashboard-card {
+    background: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Efeitos modernos adicionais */
+.btn-modern::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--color-sun);
+    transition: width 0.3s;
+}
+
+.btn-modern:hover::after {
+    width: 100%;
+}
+
+.table-standard th {
+    background-color: var(--color-earth);
+    color: var(--color-wheat);
+}
+
+.table-standard tbody tr:nth-of-type(odd) {
+    background-color: rgba(245, 222, 179, 0.1);
+}
+
+/* Responsividade mantida */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        text-align: center;
+    }
+
+    .btn-modern {
+        width: 100%;
+    }
+}
+
+/* Centralizar texto nas colunas específicas da tabela */
+.text-center {
+    text-align: center;
+}
+
+/* Garantir que os botões dentro das tabelas estejam centralizados */
+.table-standard .btn {
+    display: inline-block;
+    margin: 0 auto;
 }
