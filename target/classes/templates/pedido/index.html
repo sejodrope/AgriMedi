@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head th:include="layout :: htmlhead"></head>
+    <head th:include="layout :: htmlhead">
+        <meta charset="UTF-8">
+        <title>Lista de Pedidos</title>
+    </head>
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container mt-4">
@@ -20,24 +23,20 @@
                         <table class="table table-hover table-standard" id="tabelapedidos">
                             <thead class="table-dark">
                                 <tr>
-                                    <th class="text-center">Cliente</th>
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Data</th>
+                                    <th class="text-center">Cliente</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="umpedido : ${listaPedidos}">
-                                    <td class="text-center" th:text="${umpedido.cliente?.nome}"></td>
-                                    <td class="text-center" th:text="${umpedido.data}"></td>
+                                <tr th:each="pedido : ${listaPedidos}">
+                                    <td class="text-center" th:text="${pedido.id}"></td>
+                                    <td class="text-center" th:text="${#dates.format(pedido.data, 'dd/MM/yyyy')}"></td>
+                                    <td class="text-center" th:text="${pedido.cliente?.nome}"></td>
                                     <td class="text-center">
-                                        <a th:href="@{'/pedidos/alterar/' + ${umpedido.id}}"
-                                            class="btn btn-warning btn-sm"
-                                        >Alterar</a>
-
-                                        <button
-                                            class="btn btn-danger btn-sm js-delete"
-                                            th:data-id="${umpedido.id}"
-                                        >Excluir</button>
+                                        <a th:href="@{/pedidos/alterar/{id}(id=${pedido.id})}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a th:href="@{/pedidos/delete/{id}(id=${pedido.id})}" class="btn btn-sm btn-danger">Excluir</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -47,25 +46,26 @@
             </div>
         </main>
 
-        <div th:include="layout :: footer">(footer)</div>
-        <script th:src="@{/scriptpedido.js}"></script>
-        
+        <!-- Modal de confirmação -->
         <div class="modal fade" tabindex="-1" id="modalpedido">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Excluir pedido</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir Pedido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirma a exclusão do pedido?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-danger" id="btnsim">Sim</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  <p>Confirma a exclusão do pedido?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                  <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+
+        <div th:include="layout :: footer">(footer)</div>
+        <script th:src="@{/scriptpedido.js}"></script>
     </body>
 </html>

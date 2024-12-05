@@ -36,10 +36,10 @@ public class PedidoController {
     private ProdutoRepository produtoRepository;
 
     @GetMapping
-    public ModelAndView index(){
-        var listaPedidos = service.getAll();
-        return new ModelAndView("pedido/index",
-                "listaPedidos",listaPedidos);
+    public ModelAndView index() {
+        var modelAndView = new ModelAndView("pedido/index");
+        modelAndView.addObject("listaPedidos", service.getAll());
+        return modelAndView;
     }
 
     @GetMapping("/novo")

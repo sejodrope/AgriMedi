@@ -1,5 +1,5 @@
 :root {
-    /* Paleta de cores terrosas e naturais */
+    /* Paleta de cores expandida */
     --color-earth: #8B4513;
     --color-soil: #5C4033;
     --color-leaf: #2D5A27;
@@ -7,6 +7,14 @@
     --color-sun: #FDB813;
     --color-water: #3498db;
     --color-wheat: #F5DEB3;
+    --color-sage: #9DC183;
+    --color-bark: #966F33;
+    --color-forest: #228B22;
+    
+    /* Gradientes naturais */
+    --gradient-earth: linear-gradient(135deg, var(--color-earth) 0%, var(--color-soil) 100%);
+    --gradient-forest: linear-gradient(135deg, var(--color-leaf) 0%, var(--color-grass) 100%);
+    --gradient-sunset: linear-gradient(135deg, var(--color-sun) 0%, #FFA07A 100%);
 
     /* Novas variáveis para padronização */
     --btn-primary-bg: var(--color-grass);
@@ -22,6 +30,20 @@
     margin-bottom: 1.5rem;
     font-size: 1.75rem;
     margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-forest);
+    border-radius: 3px;
 }
 
 .table-responsive {
@@ -130,12 +152,17 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-wheat) !important;
+    position: relative;
+    padding-left: 40px;
 }
 
 .navbar-brand::before {
     content: '🌱'; /* Ou usar Font Awesome */
     font-size: 1.5rem;
     margin-right: 8px;
+    position: absolute;
+    left: 0;
+    animation: grow 2s infinite alternate;
 }
 
 .navbar-nav {
@@ -207,6 +234,22 @@
     
     .nav-link {
         text-align: center;
+    }
+
+    .dashboard-card {
+        margin: 10px;
+    }
+    
+    .navbar-custom {
+        padding: 10px;
+    }
+    
+    .table-standard {
+        font-size: 14px;
+    }
+    
+    .btn-modern {
+        padding: 8px 16px;
     }
 }
 
@@ -290,6 +333,10 @@ body::before {
     border-radius: 15px;
     overflow: hidden;
     height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
 }
 
 .dashboard-card:hover {
@@ -297,14 +344,39 @@ body::before {
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    height: 5px;
+    background: var(--gradient-forest);
+    border-radius: 5px 5px 0 0;
+}
+
 .card-icon {
     color: var(--color-grass);
     margin-bottom: 1.5rem;
     transition: transform 0.3s ease;
+    position: relative;
+    display: inline-block;
 }
 
 .dashboard-card:hover .card-icon {
     transform: scale(1.1);
+}
+
+.card-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-sage);
+    opacity: 0.2;
+    border-radius: 50%;
+    transform: scale(1.4);
+    z-index: -1;
 }
 
 .btn-block {
@@ -390,11 +462,17 @@ body::before {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-size: 0.9rem;
     padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    transition: all 0.3s ease;
 }
 
 .form-control:focus, .form-select:focus {
     border-color: var(--color-grass);
     box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+    background: white;
+    border-color: var(--color-grass);
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
 }
 
 /* Animações suaves */
@@ -438,23 +516,34 @@ body::before {
 }
 
 .loading::after {
-    content: '';
+    content: '🌱';
     width: 50px;
     height: 50px;
     border: 5px solid var(--color-grass);
     border-top-color: transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
+    font-size: 2rem;
+    animation: loading-grow 1s infinite alternate;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
+@keyframes loading-grow {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.5) rotate(360deg); }
+}
+
 /* Classes padronizadas */
 .btn-modern {
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
 }
 
 .btn-modern:hover {
@@ -462,11 +551,48 @@ body::before {
     transform: translateY(-2px);
 }
 
+.btn-modern::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--color-sun);
+    transition: width 0.3s;
+}
+
+.btn-modern:hover::after {
+    width: 100%;
+}
+
+.btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.btn-modern:hover::before {
+    left: 100%;
+}
+
 .table-standard {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     width: 100%;
     font-size: 0.9rem;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .table-standard th,
@@ -484,6 +610,14 @@ body::before {
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
+    background-color: var(--color-earth);
+    color: var(--color-wheat);
+    background: var(--gradient-earth);
+    color: var(--color-wheat);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
 }
 
 /* Estilos para centralização da tabela */
@@ -496,6 +630,19 @@ body::before {
 .table-standard td .btn {
     display: inline-block;
     margin: 0 2px;
+}
+
+.table-standard tbody tr:nth-of-type(odd) {
+    background-color: rgba(245, 222, 179, 0.1);
+}
+
+.table-standard tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-standard tbody tr:hover {
+    background: rgba(76, 175, 80, 0.1);
+    transform: scale(1.01);
 }
 
 .form-standard .form-control,
@@ -519,6 +666,9 @@ body::before {
 .navbar-custom {
     background: var(--navbar-bg);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: var(--gradient-earth);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-card {
@@ -607,4 +757,25 @@ body::before {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     color: #495057;
+}
+
+/* Animações suaves */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes grow {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
 }

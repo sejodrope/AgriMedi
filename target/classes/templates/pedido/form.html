@@ -83,11 +83,12 @@
                                         <div class="col-md-8">
                                             <div class="form-group mb-3">
                                                 <label for="cbproduto">Produto:</label>
-                                                <select class="form-select" id="cbproduto"
-                                                    th:field="${novoItem.produto}">
+                                                <select class="form-select" id="cbproduto" th:field="${novoItem.produto}" onchange="atualizaValor()">
+                                                    <option value="">Selecione um produto</option>
                                                     <option th:each="umproduto : ${listaProdutos}"
                                                             th:value="${umproduto.id}"
-                                                            th:text="${umproduto.descricao}">
+                                                            th:text="${umproduto.descricao}"
+                                                            th:data-valor="${umproduto.valor}">
                                                     </option>
                                                 </select>
                                             </div>
@@ -98,17 +99,29 @@
                                                     class="form-control"
                                                     th:field="${novoItem.quantidade}"
                                                     min="1" 
-                                                    required>
+                                                    required
+                                                    onchange="atualizaValor()">
                                             </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="txtDesconto">Desconto (%):</label>
+                                                <input type="number" id="txtDesconto"
+                                                    class="form-control"
+                                                    name="desconto"
+                                                    min="0" 
+                                                    max="100"
+                                                    value="0"
+                                                    onchange="atualizaValor()">
+                                            </div>
+
                                             <div class="form-group mb-3">
                                                 <label for="txtValorPedido">Valor do Pedido:</label>
                                                 <input type="number" id="txtValorPedido"
                                                     class="form-control"
                                                     th:field="${novoItem.valor}"
-                                                    min="0.01" 
-                                                    step="0.01"
-                                                    required>
+                                                    readonly>
                                             </div>
+                                            
                                             <div class="text-center mt-3">
                                                 <button type="submit" name="incitem"
                                                     class="btn btn-primary">Adicionar Item</button>
@@ -128,5 +141,26 @@
             </div>
         </main>
         <div th:include="layout :: footer">(footer)</div>
+        <script>
+            function atualizaValor() {
+                const produto = document.getElementById('cbproduto');
+                const quantidade = document.getElementById('txtQuantidade');
+                const desconto = document.getElementById('txtDesconto');
+                const valorPedido = document.getElementById('txtValorPedido');
+
+                if (produto.selectedIndex > 0 && quantidade.value > 0) {
+                    const valorUnitario = parseFloat(produto.options[produto.selectedIndex].getAttribute('data-valor'));
+                    const qtd = parseInt(quantidade.value);
+                    const desc = parseFloat(desconto.value) || 0;
+                    
+                    let valorTotal = valorUnitario * qtd;
+                    valorTotal = valorTotal - (valorTotal * (desc/100));
+                    
+                    valorPedido.value = valorTotal.toFixed(2);
+                } else {
+                    valorPedido.value = '';
+                }
+            }
+        </script>
     </body>
 </html>
