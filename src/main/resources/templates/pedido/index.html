@@ -35,7 +35,9 @@
                                     <td class="text-center" th:text="${#dates.format(pedido.data, 'dd/MM/yyyy')}"></td>
                                     <td class="text-center" th:text="${pedido.cliente?.nome}"></td>
                                     <td class="text-center">
-                                        <a th:href="@{/pedidos/alterar/{id}(id=${pedido.id})}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a th:href="@{'/pedidos/alterar/' + ${pedido.id}}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
                                         <a th:href="@{/pedidos/delete/{id}(id=${pedido.id})}" class="btn btn-sm btn-danger">Excluir</a>
                                     </td>
                                 </tr>

@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.agrimedi.agrimediweb.entity.ItemPedido;
 import br.agrimedi.agrimediweb.entity.Pedido;
+import br.agrimedi.agrimediweb.entity.PedidoItem;
 import br.agrimedi.agrimediweb.repository.ClienteRepository;
 import br.agrimedi.agrimediweb.repository.PedidoRepository;
 import br.agrimedi.agrimediweb.repository.ProdutoRepository;
+import br.agrimedi.agrimediweb.service.ClienteService;
 import br.agrimedi.agrimediweb.service.PedidoService;
 import br.agrimedi.agrimediweb.service.ProdutoService;
 
@@ -29,11 +31,7 @@ public class PedidoController {
     @Autowired
     private ProdutoService produtoService;
     @Autowired
-    private ClienteRepository clienteRepository;
-    @Autowired
-    private PedidoRepository pedidoRepository;
-    @Autowired
-    private ProdutoRepository produtoRepository;
+    private ClienteService clienteService;
 
     @GetMapping
     public ModelAndView index() {
@@ -72,12 +70,18 @@ public class PedidoController {
     }
 
     @GetMapping("/alterar/{id}")
-    public String alterar(@PathVariable long id, Model model) {
-        model.addAttribute("pedido", pedidoRepository.findById(id).get());
-        model.addAttribute("novoItem", new ItemPedido());
-        model.addAttribute("listaProdutos", produtoRepository.findAll());
-        model.addAttribute("listaClientes", clienteRepository.findAll());
-        return "pedido/form";
+    public ModelAndView alterar(@PathVariable Long id) {
+        var pedido = service.findById(id);
+        var clientes = clienteService.getAll();
+        var produtos = produtoService.getAll();
+        
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("pedido", pedido);
+        dados.put("listaClientes", clientes);
+        dados.put("listaProdutos", produtos);
+        dados.put("novoItem", new PedidoItem());
+        
+        return new ModelAndView("pedido/form", dados);
     }
 
     @PostMapping

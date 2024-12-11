@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: htmlhead"></head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Login AgriMedi</h3>
+                    </div>
+                    <div class="card-body">
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Usuário ou senha inválidos.
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            Você foi desconectado.
+                        </div>
+                        <form th:action="@{/login}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Usuário</label>
+                                <input type="text" name="username" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Senha</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Entrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: footer"></div>
+</body>
+</html>
