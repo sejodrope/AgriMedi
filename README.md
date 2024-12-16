@@ -73,4 +73,4 @@
 Este projeto está sob a licença **MIT** - veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 ```
 
-(https://github.com/sejodrope/AgriMedi)
+https://github.com/sejodrope/AgriMedi
